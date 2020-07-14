@@ -29,7 +29,7 @@ class APIManager{
             "client_id": CLIENT_ID,
             "client_secret": CLIENT_SECRET,
             "backend": "facebook",
-            "token": FBSDKAccessToken.current().tokenString,
+            "token": AccessToken.current().tokenString,
             "user_type": userType
         ]
         

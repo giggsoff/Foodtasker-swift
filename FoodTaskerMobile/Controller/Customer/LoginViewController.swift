@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if (FBSDKAccessToken.current() != nil){
+        if (AccessToken.current() != nil){
             bLogout.isHidden = false
             FBManager.getFBUserData(completionHandler: {
                 self.bLogin.setTitle("Continue as \(User.currentUser.email!)", for: .normal)
@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         userType = userType.capitalized
-        if(FBSDKAccessToken.current() != nil && fbLoginSuccess == true){
+        if(AccessToken.current() != nil && fbLoginSuccess == true){
             performSegue(withIdentifier: "\(userType)View", sender: self)
         }
     }
@@ -51,7 +51,7 @@ class LoginViewController: UIViewController {
         }
     }
     @IBAction func facebookLogin(_ sender: Any) {
-        if(FBSDKAccessToken.current() != nil){
+        if(AccessToken.current() != nil){
             APIManager.shared.login(userType: userType, completionHandler: { (error) in
                 if error == nil {
                     self.fbLoginSuccess = true

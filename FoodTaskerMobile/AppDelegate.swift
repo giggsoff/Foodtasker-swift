@@ -25,14 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         STPPaymentConfiguration.shared().publishableKey = STRIPE_PUBLIC_KEY
         
-        return FBSDKApplicationDelegate.sharedInstance().application(
+        return ApplicationDelegate.sharedInstance().application(
             application,
             didFinishLaunchingWithOptions: launchOptions
         )
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(
+        return ApplicationDelegate.sharedInstance().application(
             app,
             open: url,
             sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String,
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        FBSDKAppEvents.activateApp()
+        AppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
